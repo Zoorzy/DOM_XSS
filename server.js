@@ -3,15 +3,18 @@ const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 require('dotenv/config')
-const cors = require('cors')
 const port = 8080
 
-app.use(bodyParser.json())
+const cors = require('cors')
+
 app.use(
   cors({
-    origin: `http://localhost:${port}`
+    //origin: `http://localhost:${port}`
+    origin: `*`
   })
 )
+
+app.use(bodyParser.json())
 
 // IMPORT ROUTES
 const attackRoutes = require('./routes/attack')
