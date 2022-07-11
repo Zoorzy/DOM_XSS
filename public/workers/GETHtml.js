@@ -1,18 +1,13 @@
 this.onmessage = e => {
 
-  var html = ''
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      html = this.responseText;
+      self.postMessage(this.responseText)
     }
-  };
-  xhttp.open("GET", URL, true);
-
-  if (!xhttp.send()) {
-    //html = 'HTML source not available due to CORS policy'
   }
 
-  this.postMessage(html)
+  xhttp.open("GET", 'http://localhost:8080/proxyServer/' + e.data)
+  xhttp.send()
 
 }

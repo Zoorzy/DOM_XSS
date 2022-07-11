@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
   <meta charset="UTF-8">
@@ -12,10 +12,15 @@
 <body>
   <div id="main-editor">
     <!--<button id="btn">Run</button>-->
-    <div id="editor" contenteditable>Downloading . . .</div>
+    <div id="editor">
+      <pre id="pre" contenteditable="true">
+        <code>Downloading . . .</code>
+      </pre>
+    </div>
     <iframe id="frame"></iframe>
   </div>
 
+  <script type="text/javascript" src="js/frame.js"></script>
   <script type="text/javascript" src="js/editor.js"></script>
 </body>
 

@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Attack = require('../models/Attack')
+const Attack = require('../../models/Attack')
 const bodyParser = require('body-parser')
 
 // GET THE LAST 10 ATTACK REPORT
