@@ -6,6 +6,7 @@ require('dotenv/config')
 const port = 8080
 
 const cors = require('cors')
+//const axios = require('axios')
 
 app.use(
   cors({
@@ -13,6 +14,20 @@ app.use(
     origin: `*`
   })
 )
+/*
+//app.get(':endpoint([\\/\\w\\.-]*)', (req, res) => {
+app.get(':endpoint([\\/\\w\\.-]*)', (req, res) => {
+  let endpoint = 'https://www.example.com'
+  //let endpoint = 'https://date.nager.at/api/v2' + req.params.endpoint
+
+  axios.get(endpoint).then(response => {
+    res.setHeader('Content-Type', 'text/plain')
+    res.send(response.data)
+  }).catch(err => {
+    res.json(err)
+  })
+})
+*/
 
 app.use(bodyParser.json())
 
