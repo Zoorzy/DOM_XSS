@@ -14,6 +14,7 @@ app.use(
 )
 
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // IMPORT ROUTES
 const attackRoutes = require('./routes/api/attack')
@@ -22,12 +23,11 @@ const publicRoutes = require('./routes/public')
 app.use('/', publicRoutes)
 
 // PROXY SERVER TO PREVENT CORS WEB BROWSERS' POLICY
-//app.get('/proxyServer/:[protocol]\:\\/\\/[www\.]url.domain[\\/path]', (req, res) => {
-app.get('/proxyServer/:url', (req, res) => {
+app.post('/proxyServer', (req, res) => {
 
-  let endpoint = req.params.url
+  let endpoint = req.body.url
 
-  axios.get('https://' + endpoint).then(response => {
+  axios.get(endpoint).then(response => {
     res.setHeader('Content-Type', 'text/plain')
     res.send(response.data)
   }).catch(err => {

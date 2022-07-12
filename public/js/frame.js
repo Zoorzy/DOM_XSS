@@ -1,3 +1,3 @@
 const iframe = document.getElementById('frame')
-var URL = "https://gotrek.it/in-tenda-sulla-via-degli-dei/"
+var URL = "http://localhost:8080/"
 iframe.setAttribute('src', URL)
