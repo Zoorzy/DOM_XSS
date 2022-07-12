@@ -1,5 +1,5 @@
 Trovare i tag html vulnerabili (input / select / ecc)
 Gestire i tag html come oggetti json (?)
+Render della pagina html direttamente dall'editor, non da iframe src (magari con il render di express, ogni tot mando na richiesta che aggiorna... naah)
 Trovare i parametri del link passato e modificarli per vedere come si rifelttono
 Sviluppare un authstealer che salvi in log.txt i dati rubati dalle sessioni degli altri
-Render della pagina html direttamente dall'editor, non da iframe src
