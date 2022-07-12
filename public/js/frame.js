@@ -1,3 +1,3 @@
 const iframe = document.getElementById('frame')
-var URL = "http://localhost:8080/"
+var URL = "https://www.example.com/"
 iframe.setAttribute('src', URL)
