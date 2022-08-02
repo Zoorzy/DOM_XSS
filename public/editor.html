@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM XSS</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/editor.css">
+</head>
+
+<body>
+  <div id="main-editor" class="container">
+    
+    <div id="editor">
+      <h2>http://www.example.com/</h2>
+      <pre id="pre" contenteditable="false"></pre>
+    </div>
+    <iframe id="frame"></iframe>
+
+  </div>
+
+  <!--<script src="js/loadURLs.js"></script>-->
+  <script>
+    const iframe = document.getElementById('frame')
+    const editor = document.getElementById("editor")
+    const pre = document.getElementById("pre")
+    const URL = "https://www.example.com/"
+    //const URL = "http://fischiagram.altervista.org/"
+    const gethtml = new Worker('./workers/GETHtml.js')
+
+    iframe.setAttribute('src', URL)
+
+    gethtml.postMessage(URL)
+    gethtml.onmessage = e => {
+      const lines = e.data.split(/\r?\n/).filter(element => element);
+      pre.innerText = ''
+      pre.classList.add('load')
+
+      lines.forEach(line => {
+
+        var code = document.createElement('code');
+        code.setAttribute('spellcheck', 'false')
+
+        //parse html line of code to find sinks
+        if (line.indexOf('<input') != -1 || line.indexOf('<select') != -1) {
+          code.classList.add('sinks')
+        }
+
+        code.innerText = line
+        pre.appendChild(code)
+
+      });
+    }
+  </script>
+
+</body>
+
+</html>

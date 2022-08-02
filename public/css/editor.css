@@ -5,16 +5,10 @@
 }
 
 #main-editor {
-  background: rgba(0, 0, 0, 0.91);
-  display: flex;
   width: 100%;
   padding: 1rem;
-  box-shadow: 0 2px 3px black;
   position: fixed;
   height: 100vh;
-  justify-content: center;
-  align-items: center;
-  border: 7px solid #36383f;
 }
 
 #editor {
@@ -27,6 +21,26 @@
   padding: 0.4rem;
   height: 90vh;
   font-size: large;
+  white-space: nowrap;
+}
+
+#editor h2{
+  font-weight: normal;
+  text-align: center;
+  font-style: italic;
+  font-size: x-large;
+  color: white;
+  padding: 10px;
+}
+
+#editor::-webkit-scrollbar {
+  width: .7em;
+  height: .7em;
+}
+
+#editor::-webkit-scrollbar-thumb {
+background-color: darkgrey;
+outline: 1px solid slategrey;
 }
 
 pre {
@@ -36,9 +50,10 @@ pre {
   counter-reset: line;
   border-radius: 2px;
   border-top: 5px solid #00aeef;
-  white-space: pre-line;
+  white-space: line;
   -moz-box-shadow: inset 0 0 10px #000;
   box-shadow: inset 0 0 10px #000;
+  word-wrap: break-word;
 }
 
 pre.load {
@@ -61,8 +76,12 @@ pre code:before {
   text-align: right;
 }
 
-.sinks {
+.sink {
   background-color: rgb(233, 108, 45);
+}
+
+.vulnerability {
+  background-color: rgb(233, 0, 0);
 }
 
 #frame {
@@ -75,6 +94,7 @@ pre code:before {
   height: 90vh;
 }
 
+
 @media only screen and (max-width: 1200px) {
 
   #editor {
@@ -82,10 +102,11 @@ pre code:before {
     width: 100%;
     font-size: medium;
   }
+
   #frame {
     display: none;
   }
-  
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -93,5 +114,5 @@ pre code:before {
   #editor {
     font-size: small;
   }
-  
+
 }

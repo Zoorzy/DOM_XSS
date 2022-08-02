@@ -28,13 +28,14 @@ router.get('/:attackId', async (req, res) => {
 router.post('/new', bodyParser.json(), async (req, res) => {
   const attack = new Attack({
     title: req.body.title,
-    description: req.body.description
+    description: req.body.description,
+    url: req.body.url
   })
 
   try {
     const savedAttack = await attack.save();
-    console.log(req.body.title)
-    console.log(req.body.description)
+    //console.log(req.body.title)
+    //console.log(req.body.description)
     res.json(savedAttack);
   } catch (err) {
     res.json(err);
