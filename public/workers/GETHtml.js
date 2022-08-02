@@ -1,6 +1,6 @@
 this.onmessage = e => {
   var xhttp = new XMLHttpRequest()
-  var url = 'http://localhost:8080/proxyServer'
+  var url = 'http://localhost:80/proxyServer'
   var params = 'url=' + e.data
   xhttp.open('POST', url, true)
 

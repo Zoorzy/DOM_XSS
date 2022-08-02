@@ -61,8 +61,8 @@ pre code:before {
   text-align: right;
 }
 
-.vulnerable {
-  background-color: rgb(150, 50, 0);
+.sinks {
+  background-color: rgb(233, 108, 45);
 }
 
 #frame {
