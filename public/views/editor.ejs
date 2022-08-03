@@ -17,7 +17,7 @@
         <ul>
           <li>
             <a href="#">
-              <span class="urlTitle">
+              <span id="title">
                 . . .
               </span>
             </a>
@@ -32,45 +32,28 @@
         </ul>
       </h2>
 
-      <% for(var element in url) {%>
+      <% if (url[0] !== undefined ) { for(var element in url) { %>
         <pre class="" contenteditable="false" spellcheck="false"></pre>
-      <% } %>
-          <!--
+        <% } } else { %>
+          <pre class="" contenteditable="false" spellcheck="false"></pre>
+          <% } %>
 
-      -->
     </div>
-    <% for(var element in url) {%>
-      <iframe class=""></iframe>
-    <% } %>
-    <!--
 
-    -->
+    <% if (url[0] !== undefined ) { for(var element in url) { %>
+      <iframe class=""></iframe>
+      <% } } else { %>
+        <iframe class=""></iframe>
+        <% } %>
   </div>
 
   <script type="text/javascript">
-    function setActive(index) {
-      Array.prototype.slice.call(document.getElementsByTagName("iframe")).forEach(element => {
-        element.classList.remove("active")
-      })
-      Array.prototype.slice.call(document.getElementsByTagName("pre")).forEach(element => {
-        element.classList.remove("active")
-      })
-
-      document.getElementsByTagName("iframe")[index].classList.add("active")
-      document.getElementsByTagName("pre")[index].classList.add("active")
-    }
-
-
-    /** 
-     * filling the urls array with ejs
-     */
     let URLS = [];
     <% for (var element in url) { %>
       URLS[<%= element %>] = <%- JSON.stringify(url[element]) %>
     <% } %>
 
-    
-    setActive(0)
+    if (!URLS[0]) URLS[0] = "https://www.example.com/"
   </script>
   <script type="text/javascript" src="../js/loadURLs.js"></script>
 

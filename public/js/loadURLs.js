@@ -1,23 +1,29 @@
 //read files and create a worker for each one
-console.log(URLS)
 
-const iframe = document.getElementsByTagName("iframe")[0]
-//const editor = document.getElementById("editor")
-const pre = document.getElementsByTagName("pre")[0]
-const URL = "https://www.example.com/"
+function setActive(index) {
+  Array.prototype.slice.call(document.getElementsByTagName("iframe")).forEach(element => {
+    element.classList.remove("active")
+  })
+  Array.prototype.slice.call(document.getElementsByTagName("pre")).forEach(element => {
+    element.classList.remove("active")
+  })
+
+  document.getElementsByTagName("iframe")[index].classList.add("active")
+  document.getElementsByTagName("pre")[index].classList.add("active")
+  document.getElementById("title").innerText = URLS[index]
+}
+
+document.addEventListener("DOMContentLoaded", setActive(0))
+
+const iframes = document.getElementsByTagName("iframe")
+const pres = document.getElementsByTagName("pre")
+
+Array.prototype.slice.call(iframes).forEach((element, index) =>{
+  element.setAttribute('src', URLS[index])
+})
+
+/*
 const gethtml = new Worker('./workers/GETHtml.js')
-
-/**
- * Se non sono stati selezionati url arrivando alla pagina, mando un url di default
- *  */ 
-if (!URLS[0]) URLS[0] = URL
-
-/**
- * Load iframe while waiting for code to be downloaded and parsed
- */
-iframe.setAttribute('src', URLS[0])
-document.getElementsByClassName("urlTitle")[0].innerText = URLS[0]
-
 gethtml.postMessage(URLS[0])
 gethtml.onmessage = e => {
   
@@ -41,7 +47,7 @@ gethtml.onmessage = e => {
   });
   
 }
-
+*/
 
 /*
 const iframe = document.getElementById('frame')
