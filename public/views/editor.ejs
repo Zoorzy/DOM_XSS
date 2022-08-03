@@ -11,77 +11,68 @@
 </head>
 
 <body>
-  <div id="main-editor" class="container">
+  <div class="main-editor container">
+    <div class="editor">
+      <h2 id="top_nav">
+        <ul>
+          <li>
+            <a href="#">
+              <span class="urlTitle">
+                . . .
+              </span>
+            </a>
+            <ul>
+              <% for(var element in url) {%>
+                <li><a href="#" onclick="setActive(<%= element %>)">
+                    <%= url[element] %>
+                  </a></li>
+                <% } %>
+            </ul>
+          </li>
+        </ul>
+      </h2>
 
- <!--   
-<div class="w3-content" style="max-width:800px">
-  <img class="mySlides" src="img_nature_wide.jpg" style="width:100%">
-  <img class="mySlides" src="img_snow_wide.jpg" style="width:100%">
-  <img class="mySlides" src="img_mountains_wide.jpg" style="width:100%">
-</div>
+      <% for(var element in url) {%>
+        <pre class="" contenteditable="false" spellcheck="false"></pre>
+      <% } %>
+          <!--
 
-<div class="w3-center">
-  <div class="w3-section">
-    <button class="w3-button w3-light-grey" onclick="plusDivs(-1)">❮ Prev</button>
-    <button class="w3-button w3-light-grey" onclick="plusDivs(1)">Next ❯</button>
-  </div>
-  <button class="w3-button demo" onclick="currentDiv(1)">1</button> 
-  <button class="w3-button demo" onclick="currentDiv(2)">2</button> 
-  <button class="w3-button demo" onclick="currentDiv(3)">3</button> 
-</div>-->
-
-    <div id="editor">
-      <h2 class="urlTitle">http://www.example.com/</h2>
-      <pre id="pre" contenteditable="false"></pre>
+      -->
     </div>
-    <iframe id="frame"></iframe>
+    <% for(var element in url) {%>
+      <iframe class=""></iframe>
+    <% } %>
+    <!--
+
+    -->
   </div>
 
   <script type="text/javascript">
+    function setActive(index) {
+      Array.prototype.slice.call(document.getElementsByTagName("iframe")).forEach(element => {
+        element.classList.remove("active")
+      })
+      Array.prototype.slice.call(document.getElementsByTagName("pre")).forEach(element => {
+        element.classList.remove("active")
+      })
+
+      document.getElementsByTagName("iframe")[index].classList.add("active")
+      document.getElementsByTagName("pre")[index].classList.add("active")
+    }
+
+
     /** 
      * filling the urls array with ejs
      */
-    let URLS = []; 
-    <% for(var element in url){ %> 
+    let URLS = [];
+    <% for (var element in url) { %>
       URLS[<%= element %>] = <%- JSON.stringify(url[element]) %>
-    <% } %> 
-  </script> 
-  <script type="text/javascript" src="js/loadURLs.js"></script>
-  <script>
-    /*
-    const iframe = document.getElementById('frame')
-    const editor = document.getElementById("editor")
-    const pre = document.getElementById("pre")
-    const URL = "https://www.example.com/"
-    const gethtml = new Worker('./workers/GETHtml.js')
+    <% } %>
 
-    // Se non sono stati selezionati url arrivando alla pagina, mando un url di default
-    if(!URLS[0]) URLS[0] = URL
-
-    iframe.setAttribute('src', URL)
-
-    gethtml.postMessage(URL)
-    gethtml.onmessage = e => {
-      const lines = e.data.split(/\r?\n/).filter(element => element);
-      pre.innerText = ''
-      pre.classList.add('load')
-
-      lines.forEach(line => {
-
-        var code = document.createElement('code');
-        code.setAttribute('spellcheck', 'false')
-
-        //parse html line of code to find sinks
-        if (line.indexOf('<input') != -1 || line.indexOf('<select') != -1) {
-          code.classList.add('sinks')
-        }
-
-        code.innerText = line
-        pre.appendChild(code)
-
-      });
-    }*/
+    
+    setActive(0)
   </script>
+  <script type="text/javascript" src="../js/loadURLs.js"></script>
 
 </body>
 

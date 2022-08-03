@@ -11,23 +11,18 @@
 </head>
 
 <body>
-
   <div class="container">
     <form class="form" method="post" action="editor.ejs">
-
+      <h1>XSS SCANNER</h1>
       <div class="file-upload-wrapper" data-text="Select your file!">
         <input name="file-upload-field" type="file" class="file-upload-field">
       </div>
-
       <div id="fileContents"></div>
-
       <button class="button-64" role="button" onclick="submit()">
         <span class="text">SCAN NOW</span>
       </button>
-
     </form>
   </div>
-
   <script src="js/readFile.js"></script>
 </body>
 

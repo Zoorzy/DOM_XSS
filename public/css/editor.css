@@ -4,43 +4,106 @@
   margin: 0;
 }
 
-#main-editor {
+.main-editor {
   width: 100%;
-  padding: 1rem;
+  padding: .5rem;
   position: fixed;
   height: 100vh;
 }
 
-#editor {
+.editor {
   background: rgba(70, 70, 70, 0.91);
   width: 50%;
   overflow-x: auto;
   overflow-y: auto;
-  box-shadow: 0 1px 1px rgb(22, 22, 22);
-  outline: none;
-  padding: 0.4rem;
+  /*box-shadow: 0 1px 1px rgb(22, 22, 22);*/
+  /*outline: none;*/
+  /*padding: 0.4rem;*/
   height: 90vh;
   font-size: large;
   white-space: nowrap;
 }
 
-#editor h2{
+.editor h2 {
   font-weight: normal;
   text-align: center;
   font-style: italic;
-  font-size: x-large;
+  font-size: large;
   color: white;
-  padding: 10px;
+  padding: 20px;
+  /*background: linear-gradient(to right, #090979, #020024)*/
+  background-image: linear-gradient(to right, #17335c, #353e7c, #5f4598, #9146ac, #c73eb6);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  /*overflow: auto;*/
+  margin: auto;
 }
 
-#editor::-webkit-scrollbar {
+.main-editor .editor pre {
+  display:none;
+}
+
+.main-editor .editor pre.active {
+  display: block;
+}
+
+.main-editor iframe {
+  display:none;
+}
+
+.main-editor iframe.active {
+  display: block;
+}
+
+#top_nav li:hover ul{
+  display: block;
+}
+
+#top_nav li {
+  list-style-type: none;
+}
+
+#top_nav ul:after{
+  content: ".";
+  display: block;
+  height: 0px;
+  clear:both;
+  visibility: hidden;
+}
+
+#top_nav li a {
+  text-decoration: none;
+  display: block;
+  color: white;
+  padding: 8px;
+}
+
+#top_nav ul ul {
+  position: absolute;
+  display: none;
+  left: 0px;
+  background-color: grey;
+  width: 100%;
+}
+
+#top_nav ul ul li {
+  width: 99%;
+}
+
+a {
+  text-decoration: none;
+  text-align: center;
+}
+
+.editor::-webkit-scrollbar {
   width: .7em;
   height: .7em;
 }
 
-#editor::-webkit-scrollbar-thumb {
-background-color: darkgrey;
-outline: 1px solid slategrey;
+.editor::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
 }
 
 pre {
@@ -84,7 +147,7 @@ pre code:before {
   background-color: rgb(233, 0, 0);
 }
 
-#frame {
+iframe {
   background-color: rgb(255, 255, 255);
   width: 50%;
   overflow-y: auto;
@@ -97,13 +160,13 @@ pre code:before {
 
 @media only screen and (max-width: 1200px) {
 
-  #editor {
+  .editor {
     display: block;
     width: 100%;
     font-size: medium;
   }
 
-  #frame {
+  iframe {
     display: none;
   }
 
@@ -111,8 +174,19 @@ pre code:before {
 
 @media only screen and (max-width: 600px) {
 
-  #editor {
+  .main-editor {
+    padding: 0rem;
+    position: fixed;
+    height: 100vh;
+  }
+
+  .editor {
     font-size: small;
+  }
+
+  pre code:before {
+    border-right: 1.5px solid #ddd;
+    padding: 0 .5em;
   }
 
 }

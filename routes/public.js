@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
  */
 router.get('/editor.ejs', (req, res) => {
   try {
-    res.sendFile(path.join(public, 'views/editor.ejs'))
+    res.render(path.join(public, 'views/editor.ejs'), {url: []})
   } catch (err) {
     res.end(err)
   }

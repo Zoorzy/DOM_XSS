@@ -1,8 +1,9 @@
 //read files and create a worker for each one
+console.log(URLS)
 
-const iframe = document.getElementById('frame')
-const editor = document.getElementById("editor")
-const pre = document.getElementById("pre")
+const iframe = document.getElementsByTagName("iframe")[0]
+//const editor = document.getElementById("editor")
+const pre = document.getElementsByTagName("pre")[0]
 const URL = "https://www.example.com/"
 const gethtml = new Worker('./workers/GETHtml.js')
 
@@ -11,11 +12,15 @@ const gethtml = new Worker('./workers/GETHtml.js')
  *  */ 
 if (!URLS[0]) URLS[0] = URL
 
+/**
+ * Load iframe while waiting for code to be downloaded and parsed
+ */
 iframe.setAttribute('src', URLS[0])
 document.getElementsByClassName("urlTitle")[0].innerText = URLS[0]
 
 gethtml.postMessage(URLS[0])
 gethtml.onmessage = e => {
+  
   const lines = e.data.split(/\r?\n/).filter(element => element);
   pre.innerText = ''
   pre.classList.add('load')
@@ -23,9 +28,9 @@ gethtml.onmessage = e => {
   lines.forEach(line => {
 
     var code = document.createElement('code');
-    code.setAttribute('spellcheck', 'false')
 
     //parse html line of code to find sinks
+    // DA RIFA con DOM.element.tagname.lowercase() == "input" o una roba del genere
     if (line.indexOf('<input') != -1 || line.indexOf('<select') != -1) {
       code.classList.add('sinks')
     }
@@ -34,6 +39,7 @@ gethtml.onmessage = e => {
     pre.appendChild(code)
 
   });
+  
 }
 
 
