@@ -12,23 +12,51 @@
 
 <body>
   <div id="main-editor" class="container">
-    
+
+ <!--   
+<div class="w3-content" style="max-width:800px">
+  <img class="mySlides" src="img_nature_wide.jpg" style="width:100%">
+  <img class="mySlides" src="img_snow_wide.jpg" style="width:100%">
+  <img class="mySlides" src="img_mountains_wide.jpg" style="width:100%">
+</div>
+
+<div class="w3-center">
+  <div class="w3-section">
+    <button class="w3-button w3-light-grey" onclick="plusDivs(-1)">❮ Prev</button>
+    <button class="w3-button w3-light-grey" onclick="plusDivs(1)">Next ❯</button>
+  </div>
+  <button class="w3-button demo" onclick="currentDiv(1)">1</button> 
+  <button class="w3-button demo" onclick="currentDiv(2)">2</button> 
+  <button class="w3-button demo" onclick="currentDiv(3)">3</button> 
+</div>-->
+
     <div id="editor">
-      <h2>http://www.example.com/</h2>
+      <h2 class="urlTitle">http://www.example.com/</h2>
       <pre id="pre" contenteditable="false"></pre>
     </div>
     <iframe id="frame"></iframe>
-
   </div>
 
-  <!--<script src="js/loadURLs.js"></script>-->
+  <script type="text/javascript">
+    /** 
+     * filling the urls array with ejs
+     */
+    let URLS = []; 
+    <% for(var element in url){ %> 
+      URLS[<%= element %>] = <%- JSON.stringify(url[element]) %>
+    <% } %> 
+  </script> 
+  <script type="text/javascript" src="js/loadURLs.js"></script>
   <script>
+    /*
     const iframe = document.getElementById('frame')
     const editor = document.getElementById("editor")
     const pre = document.getElementById("pre")
     const URL = "https://www.example.com/"
-    //const URL = "http://fischiagram.altervista.org/"
     const gethtml = new Worker('./workers/GETHtml.js')
+
+    // Se non sono stati selezionati url arrivando alla pagina, mando un url di default
+    if(!URLS[0]) URLS[0] = URL
 
     iframe.setAttribute('src', URL)
 
@@ -52,7 +80,7 @@
         pre.appendChild(code)
 
       });
-    }
+    }*/
   </script>
 
 </body>

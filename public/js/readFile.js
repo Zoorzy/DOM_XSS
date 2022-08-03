@@ -19,14 +19,14 @@ fileInput.onchange = function () {
       document.getElementById("fileContents").textContent = "";
 
       var lines = this.result.split('\n');
-      for (var line = 0; line < lines.length; line++) {
+      for (var line = 0; line < lines.length && line < 15; line++) {
 
         let input = document.createElement('input')
         input.setAttribute("type", "checkbox")
         input.classList.add("check")
-        input.setAttribute("name", "url")
+        input.setAttribute("name", "url[" + line + "]")
         input.setAttribute("id", "check" + line)
-        input.setAttribute("value", lines[line])
+        input.setAttribute("value", lines[line].trim())
         input.setAttribute("checked", true)
 
         let span = document.createElement("span")
@@ -37,12 +37,7 @@ fileInput.onchange = function () {
 
       }
 
-      let submit = document.createElement("input")
-      submit.setAttribute("type", "button")
-      submit.setAttribute("value", "SCAN NOW")
-      submit.setAttribute("onclick", "submit()")
-
-      document.getElementsByTagName("form")[0].appendChild(submit)
+      document.getElementsByClassName("button-64")[0].style.display = "flex";
 
     }
   }

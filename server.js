@@ -7,6 +7,8 @@ const cors = require('cors')
 const axios = require('axios')
 const port = 80
 
+app.set('view engine', 'ejs');
+
 app.use(
   cors({
     origin: `*`

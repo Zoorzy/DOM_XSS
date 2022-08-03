@@ -13,11 +13,18 @@
 <body>
 
   <div class="container">
-    <form class="form" method="post" action="editor.html">
+    <form class="form" method="post" action="editor.ejs">
+
       <div class="file-upload-wrapper" data-text="Select your file!">
-        <input name="file-upload-field" type="file" class="file-upload-field" value="">
+        <input name="file-upload-field" type="file" class="file-upload-field">
       </div>
+
       <div id="fileContents"></div>
+
+      <button class="button-64" role="button" onclick="submit()">
+        <span class="text">SCAN NOW</span>
+      </button>
+
     </form>
   </div>
 
